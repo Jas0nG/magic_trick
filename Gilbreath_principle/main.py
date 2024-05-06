@@ -22,11 +22,8 @@ class Card:
             return self.suit == other.suit and self.value == other.value
         return False
 
-    # show the card
-    def show(self):
-        print(f'{dict_suit[self.suit]}{self.value}', end=' ')
-        # print(f'{dict_suit[self.suit]} {self.value}')
-        
+    def __str__(self):
+        return f'{dict_suit[self.suit]}{self.value}'
 
 
 class Deck:
@@ -65,7 +62,7 @@ class Deck:
     def show(self):
         print(f"=====Deck: {self.name}=====")
         for card in self.cards:
-            card.show()
+            print(card, end=' ')
         print(f"\n{len(self.cards)} cards in total.")
 
     def show_col(self, col):
@@ -73,7 +70,7 @@ class Deck:
         for i in range(0, len(self.cards), col):
             for j in range(col):
                 if i + j < len(self.cards):
-                    self.cards[i + j].show()
+                    print(self.cards[i + j], end=' ')
             print()
         print(f"\n{len(self.cards)} cards in total.")
 
